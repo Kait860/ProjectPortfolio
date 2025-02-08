@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -47,9 +48,15 @@ public class ListFile{
         }
         //closes scanner
         scnr.close();
+
         //tells user thank you and informs them that the information will be printed to a file
         System.out.println("Thank you for your input. The vehicles will all be printed to a file.");
-        
-    }
 
+        //sorts the vehicles into ascending order based upon their mpg value
+        Collections.sort(vehicleList);
+        
+        for(int i = 0; i < vehicleList.size(); i++){
+            System.out.println(vehicleList.get(i));
+        }
+    }
 }
