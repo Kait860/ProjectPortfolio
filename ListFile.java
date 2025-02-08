@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -50,13 +52,19 @@ public class ListFile{
         scnr.close();
 
         //tells user thank you and informs them that the information will be printed to a file
-        System.out.println("Thank you for your input. The vehicles will all be printed to a file.");
+        System.out.println("Thank you for your input. The vehicles will all be printed to a file called 'VehicleOutput'");
 
         //sorts the vehicles into ascending order based upon their mpg value
         Collections.sort(vehicleList);
         
-        for(int i = 0; i < vehicleList.size(); i++){
-            System.out.println(vehicleList.get(i));
+        //writes sorted linked list to a text file called "VehicleOutput"
+        try{
+            //FileWriter f = new FileWriter("VehicleOutput.txt");
+            PrintWriter writer = new PrintWriter("VehicleOutput.txt");
+            writer.print(vehicleList);
+            writer.close();
+        }catch(IOException e){
+            System.out.println("Couldn't write to file.");
         }
     }
 }
