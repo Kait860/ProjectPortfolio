@@ -59,7 +59,6 @@ public class ListFile{
         
         //writes sorted linked list to a text file called "VehicleOutput"
         try{
-            //FileWriter f = new FileWriter("VehicleOutput.txt");
             PrintWriter writer = new PrintWriter("VehicleOutput.txt");
             writer.print(vehicleList);
             writer.close();

@@ -10,6 +10,7 @@ public class Vehicle implements Comparable<Vehicle>{
         this.mpg = mpg;
     }
 
+    //compares the objects in the vehicle list
     @Override
     public int compareTo(Vehicle v){
         if(mpg > v.mpg){
