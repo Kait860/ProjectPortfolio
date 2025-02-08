@@ -9,28 +9,46 @@ public class ListFile{
         Scanner scnr = new Scanner(System.in);
         String make;
         String model;
-        Double mpg;
+        double mpg = 0.0;
 
-        //loop that continues until there is no input left
-        while(scnr.hasNext() == true){
-            try{
-                //scans values into VehicleList linked list
+        //loop that continues until 'quit' is inputted
+        while(true){
+                //prompts user for make and scans
+                System.out.println("Enter the make of the vehicle (or 'quit' to finish)");
                 make = scnr.next();
-                model = scnr.next();
-                mpg = scnr.nextDouble();
-                vehicleList.add(new Vehicle(make, model, mpg));
-                //creates message for invalid mpg input
-                if(mpg < 6 || mpg > 90){
-                    throw new IllegalArgumentException("That is not a valid miles per gallon input!");
+                if(make.equalsIgnoreCase("quit")){
+                    break;
                 }
-            //catches if the mpg input is between 6 - 90 as there shouldn't be an mpg outside of that range
-            }catch(IllegalArgumentException e){
-                //prints catch message
-                System.out.println(e.getMessage());
-            }
+                
+                //prompts user for model and scans
+                System.out.println("Enter the model of the vehicle(or 'quit' to finish)");
+                model = scnr.next();
+                if(model.equalsIgnoreCase("quit")){
+                    break;
+                }
+
+                //prompts user for mpg value and loops until a valid input is found using try and catch statements
+                while(true){
+                    System.out.println("Enter the miles per gallon on the vehicle");
+                    try{
+                        mpg = scnr.nextDouble();
+                        if(mpg <= 0){
+                            System.out.println("Miles Per Gallon cannot be zero or less");
+                        }
+                        else{
+                            break;
+                        }
+                    }catch(NumberFormatException e){
+                        System.out.println("Invalid Input. Please enter a values greater than 0");
+                    }
+                }
+                //adds information to vehicle list creating a new vehicle object
+                vehicleList.add(new Vehicle(make, model, mpg));
         }
         //closes scanner
         scnr.close();
+        //tells user thank you and informs them that the information will be printed to a file
+        System.out.println("Thank you for your input. The vehicles will all be printed to a file.");
         
     }
 

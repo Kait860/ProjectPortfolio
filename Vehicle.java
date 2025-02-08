@@ -1,10 +1,10 @@
 public class Vehicle {
     private String make;
     private String model;
-    private Double mpg;
+    private double mpg;
 
     //method used to create new Vehicle object
-    public Vehicle(String make, String model, Double mpg){
+    public Vehicle(String make, String model, double mpg){
         this.make = make;
         this.model = model;
         this.mpg = mpg;
